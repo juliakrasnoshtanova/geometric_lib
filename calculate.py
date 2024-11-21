@@ -1,8 +1,9 @@
-import circle
-import square
+from . import circle
+from . import square
+from . import triangle
 
 
-figs = ['circle', 'square']
+figs = ['circle', 'square', 'triangle']
 funcs = ['perimeter', 'area']
 sizes = {}
 
@@ -12,7 +13,7 @@ def calc(fig, func, size):
 	assert func in funcs
 
 	result = eval(f'{fig}.{func}(*{size})')
-	print(f'{func} of {fig} is {result}')
+	return result
 
 if __name__ == "__main__":
 	func = ''
@@ -28,7 +29,7 @@ if __name__ == "__main__":
 	while len(size) != sizes.get(f"{func}-{fig}", 1):
 		size = list(map(int, input("Input figure sizes separated by space, 1 for circle and square\n").split(' ')))
 	
-	calc(fig, func, size)
-
+	result = calc(fig, func, size)
+	print(f'{func} of {fig} is {result}')
 
 
